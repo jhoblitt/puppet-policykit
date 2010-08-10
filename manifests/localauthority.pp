@@ -16,7 +16,7 @@
 # }
 # 
 
-define policykit::localauthority($identity, $action, $result_active, $result_any) {
+define policykit::localauthority($identity, $action, $result_active, $result_any, $ensure=present) {
 
    File { owner => 'root', group => 'root' }
 
@@ -30,6 +30,7 @@ define policykit::localauthority($identity, $action, $result_active, $result_any
 
    file { $config_file:
       mode => 644,
+      ensure => $ensure,
       content => "[$name]
 Identity=$identity
 Action=$action
