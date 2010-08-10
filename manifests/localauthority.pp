@@ -20,11 +20,6 @@ define policykit::localauthority($identity, $action, $result_active, $result_any
 
    File { owner => 'root', group => 'root' }
 
-   file { '/etc/polkit-1/localauthority/50-local.d':
-      ensure => directory,
-      require => Package['policykit'],
-   }
-
    $safe_name = regsubst($name, '[^a-zA-Z-]', '_', 'G')
    $config_file = "/etc/polkit-1/localauthority/50-local.d/${safe_name}.pkla"
 
