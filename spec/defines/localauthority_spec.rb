@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 describe 'policykit::localauthority', :type => :define do
+  let :facts do
+    {
+      :osfamily          => 'RedHat',
+      :lsbmajdistrelease => '6',
+    }
+  end
 
   describe 'simple case' do
     let(:title) { 'foo' }

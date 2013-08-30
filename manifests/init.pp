@@ -7,14 +7,14 @@
 # License: GPLv3
 #
 
-class policykit {
+class policykit inherits policykit::params {
 
-  package { 'policykit-1':
-    ensure => latest,
+  package { $policykit::params::policykit_package:
+    ensure => present,
     alias  => 'policykit',
   }
 
-  file { '/etc/polkit-1/localauthority/50-local.d':
+  file { $policykit::params::policykit_local_path:
     ensure  => directory,
     require => Package['policykit'],
   }

@@ -15,7 +15,6 @@
 #    result_any => 'no',
 # }
 #
-
 define policykit::localauthority(
   $identity,
   $action,
@@ -31,13 +30,15 @@ define policykit::localauthority(
   validate_string($result_active)
   validate_re($ensure, ['^present$', '^absent'])
 
-  File { owner => 'root', group => 'root' }
+  include policykit
 
   $safe_name = regsubst($name, '[^a-zA-Z-]', '_', 'G')
-  $config_file = "/etc/polkit-1/localauthority/50-local.d/${safe_name}.pkla"
+  $config_file = "${policykit::params::policykit_local_path}/${safe_name}.pkla"
 
   file { $config_file:
     ensure  => $ensure,
+    owner   => 'root',
+    group   => 'root',
     mode    => '0644',
     content => "[${name}]
 Identity=${identity}

@@ -3,6 +3,13 @@ require 'spec_helper'
 describe 'policykit', :type => :class do
 
   describe 'for osfamily RedHat' do
+    let :facts do
+      {
+        :osfamily          => 'RedHat',
+        :lsbmajdistrelease => '6',
+      }
+    end
+
     it { should contain_class('policykit') }
   end
 
