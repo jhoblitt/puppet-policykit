@@ -1,19 +1,19 @@
+# == Define: policykit::localauthority
 #
-# D-INFK SANS
-# ===========
-#
-# Copyright: Steven Armstrong, Nico Schottelius
-#
-# License: GPLv3
-#
-
+# === Examples
 #
 # policykit::localauthority { 'Disable suspend':
-#    identity => 'unix-user:*',
-#    action => 'org.freedesktop.upower.suspend',
-#    result_active => 'no',
-#    result_any => 'no',
+#    identity        => 'unix-user:*',
+#    action          => 'org.freedesktop.upower.suspend',
+#    result_active   => 'no',
+#    result_any      => 'no',
+#    result_inactive => 'no',
 # }
+#
+# === Copyright
+#
+# Copyright: Steven Armstrong, Nico Schottelius
+# Copyright (C) 2013 Joshua Hoblitt
 #
 define policykit::localauthority(
   $identity,

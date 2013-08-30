@@ -1,12 +1,14 @@
+# == Class: policykit
 #
-# D-INFK SANS
-# ===========
+# === Examples
+#
+# include policykit
+#
+# === Copyright
 #
 # Copyright: Steven Armstrong, Nico Schottelius
+# Copyright (C) 2013 Joshua Hoblitt
 #
-# License: GPLv3
-#
-
 class policykit inherits policykit::params {
 
   package { $policykit::params::policykit_package:
