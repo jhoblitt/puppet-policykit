@@ -23,15 +23,20 @@ Description
 -----------
 
 Ensures that the PolicyKit or
-[`polkit`](http://www.freedesktop.org/wiki/Software/polkit/) is installed and
-provides a mechanism for managing localauthority configuration files.
+[`polkit`](http://www.freedesktop.org/wiki/Software/polkit/) package is
+installed and provides a mechanism for managing localauthority configuration
+files.
 
+### Forked
+
+This module was forked from [git://git.sans.ethz.ch/puppet-modules/policykit]
+in order to update it's functionality and add basic tests.
 
 Usage
 -----
 
 To only ensure that the policykit software package is installed.  Note that
-this isn't nessicary when used the `policykit::localauthority` defined type as
+this isn't nessicary when using the `policykit::localauthority` defined type as
 including the `policykit` class is implied.
 
     include policykit
