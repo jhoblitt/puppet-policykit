@@ -24,6 +24,12 @@ define policykit::localauthority(
   $result_active,
   $ensure = present
 ) {
+  validate_string($identity)
+  validate_string($action)
+  validate_string($result_any)
+  validate_string($result_inactive)
+  validate_string($result_active)
+  validate_re($ensure, ['^present$', '^absent'])
 
   File { owner => 'root', group => 'root' }
 
