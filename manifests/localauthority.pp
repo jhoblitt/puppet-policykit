@@ -19,8 +19,9 @@
 define policykit::localauthority(
   $identity,
   $action,
-  $result_active,
   $result_any,
+  $result_inactive,
+  $result_active,
   $ensure = present
 ) {
 
@@ -36,6 +37,7 @@ define policykit::localauthority(
 Identity=${identity}
 Action=${action}
 ResultAny=${result_any}
+ResultInactive=${result_inactive}
 ResultActive=${result_active}
 ",
   }
