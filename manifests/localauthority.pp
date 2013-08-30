@@ -14,25 +14,31 @@
 #    result_active => 'no',
 #    result_any => 'no',
 # }
-# 
+#
 
-define policykit::localauthority($identity, $action, $result_active, $result_any, $ensure=present) {
+define policykit::localauthority(
+  $identity,
+  $action,
+  $result_active,
+  $result_any,
+  $ensure = present
+) {
 
-   File { owner => 'root', group => 'root' }
+  File { owner => 'root', group => 'root' }
 
-   $safe_name = regsubst($name, '[^a-zA-Z-]', '_', 'G')
-   $config_file = "/etc/polkit-1/localauthority/50-local.d/${safe_name}.pkla"
+  $safe_name = regsubst($name, '[^a-zA-Z-]', '_', 'G')
+  $config_file = "/etc/polkit-1/localauthority/50-local.d/${safe_name}.pkla"
 
-   file { $config_file:
-      mode => 644,
-      ensure => $ensure,
-      content => "[$name]
-Identity=$identity
-Action=$action
-ResultActive=$result_active
-ResultAny=$result_any
+  file { $config_file:
+    ensure  => $ensure,
+    mode    => '0644',
+    content => "[${name}]
+Identity=${identity}
+Action=${action}
+ResultAny=${result_any}
+ResultActive=${result_active}
 ",
-   }
+  }
 
 }
 
