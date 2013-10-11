@@ -11,6 +11,7 @@ describe 'policykit', :type => :class do
     end
 
     it { should contain_class('policykit') }
+    it { should contain_package('polkit') }
   end
 
 end

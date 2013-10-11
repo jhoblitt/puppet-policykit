@@ -16,7 +16,7 @@ class policykit::params {
     'redhat': {
       case $::lsbmajdistrelease {
         6: {
-          $policykit_package    = 'policykit-1'
+          $policykit_package    = 'polkit'
           $policykit_local_path = '/etc/polkit-1/localauthority/50-local.d'
         }
         default: {
