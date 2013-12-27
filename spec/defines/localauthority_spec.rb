@@ -3,8 +3,8 @@ require 'spec_helper'
 describe 'policykit::localauthority', :type => :define do
   let :facts do
     {
-      :osfamily          => 'RedHat',
-      :lsbmajdistrelease => '6',
+      :osfamily                  => 'RedHat',
+      :operatingsystemmajrelease => '6',
     }
   end
 

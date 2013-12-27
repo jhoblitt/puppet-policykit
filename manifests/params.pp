@@ -14,13 +14,13 @@ class policykit::params {
 
   case $::osfamily {
     'redhat': {
-      case $::lsbmajdistrelease {
+      case $::operatingsystemmajrelease {
         6: {
           $policykit_package    = 'polkit'
           $policykit_local_path = '/etc/polkit-1/localauthority/50-local.d'
         }
         default: {
-          fail("Module ${module_name} is not supported on lsbmajdistrelease ${::lsbmajdistrelease}")
+          fail("Module ${module_name} is not supported on operatingsystemmajrelease ${::operatingsystemmajrelease}")
         }
       }
     }
