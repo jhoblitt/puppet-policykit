@@ -5,8 +5,8 @@ describe 'policykit', :type => :class do
   describe 'for osfamily RedHat' do
     let :facts do
       {
-        :osfamily          => 'RedHat',
-        :lsbmajdistrelease => '6',
+        :osfamily                  => 'RedHat',
+        :operatingsystemmajrelease => '6',
       }
     end
 
