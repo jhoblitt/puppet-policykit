@@ -2,8 +2,10 @@ require 'spec_helper_system'
 
 describe 'policykit class' do
   case node.facts['osfamily']
-  when 'RedHat', 'Debian'
+  when 'RedHat'
     package_name = 'polkit'
+  when 'Debian'
+    package_name = 'policykit-1'
   end
 
   describe 'running puppet code' do

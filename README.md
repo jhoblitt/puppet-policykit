@@ -84,6 +84,7 @@ releases prior to el6.x.
 ### Tested on
 
  * el6.x
+ * Debian 7.0 (wheezy)
 
 
 Versioning
