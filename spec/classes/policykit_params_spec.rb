@@ -2,39 +2,41 @@ require 'spec_helper'
 
 describe 'policykit::params', :type => :class do
   describe 'for osfamily RedHat' do
-    let :facts do
-      {
-        :osfamily => 'RedHat',
-      }
-    end
+    let(:facts) {{ :osfamily => 'RedHat' }}
 
     describe 'el6.x' do
-      before { facts[:lsbmajdistrelease] = '6' }
+      before { facts[:operatingsystemmajrelease] = '6' }
   
-      it { should include_class('policykit::params') }
+      it { should contain_class('policykit::params') }
     end
 
     describe 'unsupported lsbmajdistrelease' do
-      before { facts[:lsbmajdistrelease] = '7' }
+      before { facts[:operatingsystemmajrelease] = '7' }
 
       it 'should fail' do
-        expect { should include_class('policykit::params') }.
-          to raise_error(Puppet::Error, /not supported on lsbmajdistrelease 7/)
+        expect { should contain_class('policykit::params') }.
+          to raise_error(Puppet::Error, /not supported on operatingsystemmajrelease 7/)
       end
     end
+  end
+
+  describe 'for osfamily Debian' do
+    let(:facts) {{ :osfamily => 'Debian' }}
+
+    it { should contain_class('policykit::params') }
   end
 
   describe 'unsupported osfamily' do
     let :facts do 
       {
-        :osfamily        => 'Debian',
-        :operatingsystem => 'Debian',
+        :osfamily        => 'Solaris',
+        :operatingsystem => 'Solaris',
       }
     end
   
     it 'should fail' do
-      expect { should include_class('policykit::params') }.
-        to raise_error(Puppet::Error, /not supported on Debian/)
+      expect { should contain_class('policykit::params') }.
+        to raise_error(Puppet::Error, /not supported on Solaris/)
     end
   end
 

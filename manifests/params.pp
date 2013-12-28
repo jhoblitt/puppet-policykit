@@ -12,17 +12,21 @@
 #
 class policykit::params {
 
+  $policykit_local_path = '/etc/polkit-1/localauthority/50-local.d'
+
   case $::osfamily {
     'redhat': {
-      case $::lsbmajdistrelease {
+      case $::operatingsystemmajrelease {
         6: {
           $policykit_package    = 'polkit'
-          $policykit_local_path = '/etc/polkit-1/localauthority/50-local.d'
         }
         default: {
-          fail("Module ${module_name} is not supported on lsbmajdistrelease ${::lsbmajdistrelease}")
+          fail("Module ${module_name} is not supported on operatingsystemmajrelease ${::operatingsystemmajrelease}")
         }
       }
+    }
+    'debian': {
+      $policykit_package    = 'policykit-1'
     }
     default: {
       fail("Module ${module_name} is not supported on ${::operatingsystem}")
