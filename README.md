@@ -1,5 +1,5 @@
 Puppet policykit Module
-=========================
+=======================
 
 [![Build Status](https://travis-ci.org/jhoblitt/puppet-policykit.png)](https://travis-ci.org/jhoblitt/puppet-policykit)
 
