@@ -18,7 +18,7 @@ class policykit::params {
     'redhat': {
       case $::operatingsystemmajrelease {
         6: {
-          $policykit_package    = 'polkit'
+          $policykit_package = 'polkit'
         }
         default: {
           fail("Module ${module_name} is not supported on operatingsystemmajrelease ${::operatingsystemmajrelease}")
@@ -26,7 +26,7 @@ class policykit::params {
       }
     }
     'debian': {
-      $policykit_package    = 'policykit-1'
+      $policykit_package = 'policykit-1'
     }
     default: {
       fail("Module ${module_name} is not supported on ${::operatingsystem}")
