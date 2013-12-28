@@ -20,17 +20,23 @@ describe 'policykit::params', :type => :class do
     end
   end
 
+  describe 'for osfamily Debian' do
+    let(:facts) {{ :osfamily => 'Debian' }}
+
+    it { should contain_class('policykit::params') }
+  end
+
   describe 'unsupported osfamily' do
     let :facts do 
       {
-        :osfamily        => 'Debian',
-        :operatingsystem => 'Debian',
+        :osfamily        => 'Solaris',
+        :operatingsystem => 'Solaris',
       }
     end
   
     it 'should fail' do
       expect { should contain_class('policykit::params') }.
-        to raise_error(Puppet::Error, /not supported on Debian/)
+        to raise_error(Puppet::Error, /not supported on Solaris/)
     end
   end
 
