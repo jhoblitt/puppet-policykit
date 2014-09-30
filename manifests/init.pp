@@ -5,7 +5,7 @@
 # include policykit
 #
 # ---
-# policykit::policies :
+# policykit::localauthorities :
 #   'Disable suspend' :
 #     identity        : 'unix-user:*'
 #     action          : 'org.freedesktop.upower.suspend'
@@ -19,7 +19,7 @@
 # Copyright (C) 2013 Joshua Hoblitt
 #
 class policykit (
-  $policies = {}
+  $localauthorities = {}
 ) inherits policykit::params {
 
   package { $policykit::params::policykit_package:
@@ -32,7 +32,7 @@ class policykit (
     require => Package['policykit'],
   }
 
-  create_resources('policykit::localauthority', $policies)
+  create_resources('policykit::localauthority', $localauthorities)
 
 }
 
